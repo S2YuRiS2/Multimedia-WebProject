@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   	<title>김유리_학기말과제</title>
+   	   <link rel="stylesheet" href="/webProject/f1.css">
+   	   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+   	   <script>
+   	      $(function(){
+   	      	var pull=$('#pull');
+   	      	    menu=$('nav ul');
+   	      	    menuHeight=menu.height();
+   	      $(pull).on('click', function(e){
+   	      	e.preventDefault();
+   	      	menu.slideToggle();
+   	      });
+   	      $(window).resize(function(){
+   	      	var w=$(window).width();
+   	      	if(w>600 && menu.is(':hidden'))
+   	      		{menu.removeAttr('style');}
+   	      });
+   	  });
+   	   </script>
+   	   <script>
+		function initialize() {
+			var Y_point			= 35.91341597205514;
+			var X_point			= 128.80257202937455;
+			var zoomLevel		= 19;
+			var markerTitle		= "대구가톨릭대학교 컴퓨터소프트웨어학부";
+			var markerMaxWidth	= 300;
+			var contentString	= '<div id="content">' +
+			'<div id="siteNotice">' +'</div>'+'<h3 id="firstHeading" class="firstHeading">대구가톨릭대학교 컴퓨터소프트웨어학부</h3>'+'<div id="bodyContent">'+'<p>대구가톨릭대학교 공학관 경산시 하양읍<br/>' +'<a href="https://cafe.naver.com/dcuit" target="_blank">https://cafe.naver.com/dcuit</a></p>'+'</div>'+'</div>';
+
+			var myLatlng = new google.maps.LatLng(Y_point, X_point);
+			var mapOptions = {
+								zoom: zoomLevel,
+								center: myLatlng,
+								mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+			var marker = new google.maps.Marker({
+													position: myLatlng,
+													map: map,
+													title: markerTitle
+			});
+
+			var infowindow = new google.maps.InfoWindow(
+														{
+															content: contentString,
+															maxWidth: markerMaxWidth
+														}
+			);
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, marker);
+			});
+		}
+	</script>
+  <style>
+      @import url('https://fonts.google.com/share?selection.family=Nanum%20Pen%20Script')
+    </style>
+   </head>
+   <body onload="initialize()">
+   <div class="icon">
+      <a href="https://www.facebook.com/CUIT2740"><img src="/webProject/image/facebook.png" width="30px"></a>
+       <a href="https://www.instagram.com/dcu_fever/"><img src="/webProject/image/instagram.png" width="30px"></a>
+       <a href="https://cafe.naver.com/dcuit"><img src="/webProject/image/cafe.png" width="30px"></a>
+   </div>
+    <div class="clearfix">
+        <div class="header">
+            <a href="/webProject/web/final.html"><img src="/webProject/image/logo.png" width="200px" height="" ></a>
+        </div>
+    </div>
+   	   <nav class="clearfix">
+   	      <ul class="clearfix">
+   	         <li><a href="/webProject/web/introduce.html">학과 소개</a></li>
+   	         <li><a href="/webProject/web/information.html">학사 안내</a></li>
+   	         <li><a href="/webProject/web/board.html">자유게시판</a></li>
+   	         <li><a href="/webProject/web/map.html">오시는 길</a></li>
+   	      </ul>
+   	      <a id="pull" href="#">Menu</a>
+   	  </nav>
+   	  <div id="map_canvas" style="height: 450px; margin:10px;" ></div>
+   	  <ul style="font-size: 13px; font-family: 'Nanum Pen Script', sans-serif;">
+           <li style="padding-left: -30px;display: inline; font-size: 20px;">오시는 길</li>
+            <li style="margin-top: 5px;">주소 : 경산시 하양읍 대구가톨릭대학교 공학관</li>
+            <li style="margin-bottom: 12px;">전화번호 : 053-850-2740</li>
+            <li style="padding-left: -30px; display: inline; font-size: 20px;">대중교통</li>
+            <li>동대구역복합환승센터건너(708, 55, 814, 818) → 대구가톨릭대학교 정류장 하차</li>
+            <li>동대구역(안심역 방향) → 안심역에서 버스로 환승(급행5, 818, 55, 518) → 대구가톨릭대학교 정류장 하차</li>
+            <li style="margin-bottom: 12px;">동대구역 → 하양역 (20분 소요) <br>13:50(무궁화), 15:00(무궁화), 16:00(무궁화), 16:30(무궁화), 17:00(무궁화)<br>17:50(무궁화), 18:30(무궁화), 19:05(무궁화), 20:00(무궁화), 21:20(무궁화)</li>
+            <li style="padding-left: -30px; display: inline; font-size: 20px;">학교버스 이용 시</li>
+            <li>대구지하철 안심역(종점) ↔ 대구지하철 안심역(종점) 학교간 전형일(면접·실기고사)에 수시운행</li>
+
+   	  </ul>
+   	  <div class="footer">
+   	      <p>COPYRIGHT BY CATHOLIC UNIVERSITY OF DAEGU. ALL RIGHTS RESERVED.</p>
+   	       <p style="margin-bottom: 0px">made by.yuri</p>
+   	  </div>
+   </body>
+</html>
